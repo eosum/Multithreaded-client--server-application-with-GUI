@@ -10,6 +10,7 @@ public class Register implements Command {
     @Override
     public void execute(String args, HumanBeing object, UserInfo userInfo, Response response) {
         response.setMessage(UserExist.register(userInfo.getUser(), userInfo.getPassword()));
+        if(!response.getMessage().equals("Успешно")) response.setSuccess(false);
         Server.sendResponse(response, response.getKey());
     }
 

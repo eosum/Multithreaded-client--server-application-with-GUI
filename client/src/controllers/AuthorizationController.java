@@ -16,28 +16,10 @@ public class AuthorizationController {
     ServerProvider serverProvider = ServerProvider.getServerProvider();
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
     private TextField login;
 
     @FXML
     private PasswordField password;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private AnchorPane body;
-
-    @FXML
-    private Label login_description;
-
-    @FXML
-    private Label page_name;
-
-    @FXML
-    private Label password_description;
 
     @FXML
     private Button sign_up_button;
@@ -45,10 +27,10 @@ public class AuthorizationController {
     @FXML
     private Button log_in_button;
 
-    private Request requestForming(String login, String password, String command) {
+    private Request requestForming(String command) {
         Request request = new Request();
-        request.setUser(login);
-        request.setPassword(password);
+        request.setUser(login.getText());
+        request.setPassword(password.getText());
         request.setCommand(command);
 
         return request;
@@ -64,7 +46,7 @@ public class AuthorizationController {
     void initialize() {
         log_in_button.setOnAction(event -> {
             try {
-                serverProvider.send(requestForming(login.getText(), password.getText(), "login"));
+                serverProvider.send(requestForming("login"));
                 Response response = serverProvider.getResponse();
                 if(response.isSuccess()) {
                     SceneSwitch.setScene("../recourses/main_page.fxml", "../recourses/css/main_page.css");
@@ -73,8 +55,26 @@ public class AuthorizationController {
                 else {
                     alertForming(response.getMessage());
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        });
+
+        sign_up_button.setOnAction(event -> {
+            try {
+                serverProvider.send(requestForming("register"));
+                Response response = serverProvider.getResponse();
+                if(response.isSuccess()) {
+                    SceneSwitch.setScene("../recourses/main_page.fxml", "../recourses/css/main_page.css");
+                    SceneSwitch.show();
+                }
+                else {
+                    alertForming(response.getMessage());
+                }
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         });
     }

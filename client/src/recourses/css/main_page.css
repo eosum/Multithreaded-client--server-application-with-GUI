@@ -4,8 +4,9 @@
 }
 
 .root {
-    -fx-background-image: url('../2.jpg');
+    -fx-background-color: #232531;
     -fx-font-family: "Roboto Mono";
+    -fx-text-fill: #ffffff;
 }
 
 #commands {
@@ -208,4 +209,62 @@
 #car_description {
     -fx-translate-x: 338px;
     -fx-translate-y: 283px;
+}
+
+#object_table {
+    -fx-background-color: transparent;
+    -fx-pref-width: 1180px;
+    -fx-pref-height: 200px;
+    -fx-translate-x: 158px;
+    -fx-translate-y: 100px;
+
+}
+
+.table-column {
+    -fx-pref-height: 70px;
+    -fx-pref-width: 100px;
+    -fx-background-color: #232531;
+    -fx-border-width: 0;
+
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+}
+
+#id_column {
+    -fx-pref-width: 70px;
+}
+
+#name_column {
+    -fx-pref-width: 90px;
+}
+
+.coordinate_column {
+    -fx-pref-width: 70px;
+}
+
+.boolean_column {
+    -fx-pref-width: 80px;
+}
+
+#minutes_column {
+    -fx-pref-width: 120px;
+}
+
+#soundtrack_column {
+    -fx-pref-width: 115px;
+}
+
+#table_description {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 22px;
+    -fx-translate-x: 590px;
+    -fx-translate-y: 32px;
+}
+
+#to_map {
+    -fx-translate-x: 850px;
+    -fx-translate-y: 28px;
 }

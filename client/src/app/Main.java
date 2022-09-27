@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             SceneSwitch.setStage(stage);
-            SceneSwitch.setScene("../recourses/authorization.fxml", "../recourses/css/authorization_style.css");
+            SceneSwitch.setScene("../recourses/main_page.fxml", "../recourses/css/main_page.css");
             SceneSwitch.show();
         }
         catch (IOException e) {
