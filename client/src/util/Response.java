@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Response implements Serializable {
     private static final long serialVersionUID = 12345678910L;
     private String message = " - выполнение команды прошло успешно";
-    private Boolean success = false;
+    private Boolean success = true;
     private LinkedList<? extends Serializable> object;
 
     public String getMessage() {

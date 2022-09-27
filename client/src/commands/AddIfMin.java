@@ -4,7 +4,7 @@ import input.ElementInput;
 import util.Request;
 
 public class AddIfMin implements Command {
-    public Request getRequest(String arg, boolean fromFile) {
+    public Request getRequest(String arg) {
         Request request = new Request();
         ElementInput element = new ElementInput();
         request.setObject(element.resultElement(0L));

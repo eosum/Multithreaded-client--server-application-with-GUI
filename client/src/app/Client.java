@@ -16,27 +16,15 @@ import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Client
-{
+public class Client {
     private final int SERVER_PORT = 8081;
     private final int BUFFER_SIZE = 1048576;
-    private Socket socket;
+    private Socket socket = new Socket();
     private InetAddress address;
     private InputStream inputStream;
     private OutputStream outputStream;
-    private static Client client;
 
-    public Client() {
-        this.socket = new Socket();
-    }
 
-    public void setClient(final Client client) {
-        Client.client = client;
-    }
-
-    public static Client getClient() {
-        return Client.client;
-    }
 
     public boolean connect() {
         try {
@@ -98,7 +86,7 @@ public class Client
     }
 
     public Response getResponse() {
-        Response response = new Response();
+        Response response = null;
         final ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
         try {
             inputStream.read(buffer.array());

@@ -6,7 +6,7 @@ import util.Request;
 
 public class Update implements Command {
     @Override
-    public Request getRequest(String arg, boolean fromFile) {
+    public Request getRequest(String arg) {
         Request request = new Request();
         CheckCorrectData check = new CheckCorrectData();
 

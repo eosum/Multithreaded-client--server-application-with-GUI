@@ -26,6 +26,7 @@ public class Add implements Command {
     public void execute(String args, HumanBeing object, UserInfo userInfo, Response response) {
         if(!collectionManager.add(object, userInfo.getUser())) {
             response.setMessage("Элемент не добавлен");
+            response.setSuccess(false);
         }
         Server.sendResponse(response, response.getKey());
     }

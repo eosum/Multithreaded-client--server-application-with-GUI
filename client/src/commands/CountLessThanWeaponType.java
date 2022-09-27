@@ -5,7 +5,7 @@ import util.Request;
 
 public class CountLessThanWeaponType implements Command {
     @Override
-    public Request getRequest(String arg, boolean fromFile) {
+    public Request getRequest(String arg) {
         Request request = new Request();
         CheckCorrectData check = new CheckCorrectData();
         if (check.checkWeaponType(arg) == 1) {

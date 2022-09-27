@@ -14,13 +14,18 @@ public class Response implements Serializable {
     private String message = "Выполнение команды прошло успешно";
     private LinkedList<? extends Serializable> object;
 
-    private Boolean success = false;
+    private Boolean success = true;
     public void setMessage(String message) {
         this.message = message;
     }
     public SelectionKey getKey() {
         return key;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
     public void setKey(SelectionKey key) {
         this.key = key;
     }

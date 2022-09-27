@@ -28,10 +28,10 @@ public class Server {
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress(SERVER_PORT));
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+            System.out.println("Сервер запущен");
         }
         catch (IOException e) {
             System.out.println(e.getMessage());
-            System.out.println("Проблемы с соединением");
         }
     }
     public Selector getSelector() {

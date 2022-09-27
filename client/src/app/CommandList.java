@@ -20,24 +20,19 @@ public class CommandList {
         commands.put("count_less_than_weapon_type", new CountLessThanWeaponType());
         commands.put("remove_greater", new RemoveGreater());
         commands.put("add_if_min", new AddIfMin());
-        commands.put("execute_script", new ExecuteScript(this));
         commands.put("help", new Help());
     }
 
-    public Request requestFormation(String command, String arg, boolean fromFile) {
+    public Request requestFormation(String command, String arg) {
         if (commands.containsKey(command)) {
-            Request request = commands.get(command).getRequest(arg, fromFile);
+            Request request = commands.get(command).getRequest(arg);
             if (request != null) {
                 request.setCommand(command);
             }
             return request;
         }
-        if (fromFile) {
-            System.out.println("Команды " + command + " не существует.");
-        }
-        else {
-            System.out.println("Запрос не может быть сформирован. Проверьте вводимые данные");
-        }
+        System.out.println("Запрос не может быть сформирован. Проверьте вводимые данные");
+
         return null;
     }
 }

@@ -205,7 +205,7 @@ public class CollectionManager {
         }
     }
 
-    public boolean collection_initialization() {
+    public String collection_initialization() {
         try {
             ResultSet collectionFromDB = databaseManager.getFromDB();
             while(collectionFromDB.next()) {
@@ -223,13 +223,12 @@ public class CollectionManager {
                     new Car(collectionFromDB.getString("car"))
                 );
                 collection.add(element);
-                return true;
             }
+            return "Коллекция инициализирована";
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
-        return false;
     }
 }
 
