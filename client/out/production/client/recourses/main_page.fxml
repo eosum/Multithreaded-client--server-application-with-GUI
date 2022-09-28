@@ -8,82 +8,89 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<AnchorPane prefHeight="960.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<AnchorPane prefHeight="960.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
+    <children>
 
-      <Pane fx:id="header" prefHeight="70" prefWidth="1000">
-         <children>
-            <Label fx:id="table_description" text="Humanbeing table" />
-            <Button fx:id="to_map" mnemonicParsing="false" text="Go to the map" />
-         </children>
-      </Pane>
+        <Pane fx:id="header" prefHeight="70" prefWidth="1000">
+            <children>
+                <Label fx:id="table_description" text="Humanbeing table" />
+                <Button fx:id="to_map" mnemonicParsing="false" text="Go to the map" />
+            </children>
+        </Pane>
 
-      <Pane fx:id="commands" prefHeight="131.0" prefWidth="670.0">
-         <children>
-            <Button fx:id="add" mnemonicParsing="false" text="add" />
-            <Button fx:id="add_if_min" mnemonicParsing="false" text="add if min" />
-            <Button fx:id="remove_by_id" mnemonicParsing="false" text="remove by id" />
-            <Button fx:id="clear" mnemonicParsing="false" text="clear" />
-            <Button fx:id="info" mnemonicParsing="false" text="info" />
-            <Button fx:id="count_than_less" mnemonicParsing="false" text="count less than weapon type" />
-            <Button fx:id="remove_first" mnemonicParsing="false" text="remove first" />
-            <Button fx:id="print_ascending" mnemonicParsing="false" text="print ascending" />
-            <Button fx:id="help" mnemonicParsing="false" text="help" />
-            <Button fx:id="show" mnemonicParsing="false" text="show" />
-            <Button fx:id="remove_greater" mnemonicParsing="false" text="remove greater" />
-            <Button fx:id="update" mnemonicParsing="false" text="update" />
-         </children>
-      </Pane>
+        <Pane fx:id="commands" prefHeight="131.0" prefWidth="670.0">
+            <children>
+                <Button fx:id="add" mnemonicParsing="false" text="add" />
+                <Button fx:id="add_if_min" mnemonicParsing="false" text="add if min" />
+                <Button fx:id="remove_by_id" mnemonicParsing="false" text="remove by id" />
+                <Button fx:id="clear" mnemonicParsing="false" text="clear" />
+                <Button fx:id="info" mnemonicParsing="false" text="info" />
+                <Button fx:id="count_than_less" mnemonicParsing="false" text="count less than weapon type" />
+                <Button fx:id="remove_first" mnemonicParsing="false" text="remove first" />
+                <Button fx:id="print_ascending" mnemonicParsing="false" text="print ascending" />
+                <Button fx:id="help" mnemonicParsing="false" text="help" />
+                <Button fx:id="show" mnemonicParsing="false" text="show" />
+                <Button fx:id="remove_greater" mnemonicParsing="false" text="remove greater" />
+                <Button fx:id="update" mnemonicParsing="false" text="update" />
+            </children>
+        </Pane>
 
-      <Pane fx:id="input" prefHeight="450" prefWidth="550">
-         <children>
-            <Label fx:id="name_description" styleClass="description" text="Name" />
-            <TextField fx:id="name" styleClass="field" />
+        <Pane fx:id="input" prefHeight="450" prefWidth="650">
+            <children>
+                <Label fx:id="id_description" styleClass="description" text="ID" />
+                <TextField fx:id="id" styleClass="field" />
 
-            <Label fx:id="coordinates_description" styleClass="description" text="Coordinates" />
-            <TextField fx:id="coordinates" styleClass="field" />
+                <Label fx:id="name_description" styleClass="description" text="Name" />
+                <TextField fx:id="name" styleClass="field" />
 
-            <Label fx:id="impact_description" styleClass="description" text="Impact speed" />
-            <TextField fx:id="impact_speed" styleClass="field" />
+                <Label fx:id="impact_description" styleClass="description" text="Impact speed" />
+                <TextField fx:id="impact_speed" styleClass="field" />
 
-            <Label fx:id="hero_description" styleClass="description" text="Real hero" />
-            <TextField fx:id="real_hero" styleClass="field" />
+                <Label fx:id="hero_description" styleClass="description" text="Real hero" />
+                <TextField fx:id="real_hero" styleClass="field" />
 
-            <Label fx:id="toothpick_description" styleClass="description" text="Has toothpick" />
-            <TextField fx:id="has_toothpick" styleClass="field" />
+                <Label fx:id="toothpick_description" styleClass="description" text="Has toothpick" />
+                <TextField fx:id="has_toothpick" styleClass="field" />
 
-            <Label fx:id="weapon_description" styleClass="description" text="Weapon Type" />
-            <TextField fx:id="weapon_type" styleClass="field" />
+                <Label fx:id="weapon_description" styleClass="description" text="Weapon Type" />
+                <TextField fx:id="weapon_type" styleClass="field" />
 
-            <Label fx:id="minutes_description" styleClass="description" text="Minutes of waiting" />
-            <TextField fx:id="minutes_of_waiting" styleClass="field" />
+                <Label fx:id="minutes_description" styleClass="description" text="Minutes of waiting" />
+                <TextField fx:id="minutes_of_waiting" styleClass="field" />
 
-            <Label fx:id="car_description" styleClass="description" text="Car" />
-            <TextField fx:id="car" styleClass="field" />
+                <Label fx:id="x_description" styleClass="description" text="X" />
+                <TextField fx:id="x" styleClass="field" />
 
-            <Button fx:id="send_data" mnemonicParsing="false" text="SEND DATA" />
+                <Label fx:id="y_description" styleClass="description" text="Y" />
+                <TextField fx:id="y" styleClass="field" />
 
-         </children>
-      </Pane>
+                <Label fx:id="soundtrack_description" styleClass="description" text="Soundtrack" />
+                <TextField fx:id="soundtrack" styleClass="field" />
 
-   <TableView fx:id="object_table">
-      <columns>
-         <TableColumn fx:id="id_column" text="id" />
-         <TableColumn fx:id="name_column" text="name" />
-         <TableColumn styleClass="coordinate_column" text="x" />
-         <TableColumn styleClass="coordinate_column" text="y" />
-         <TableColumn styleClass="boolean_column" text="Real&#10;hero" />
-         <TableColumn styleClass="boolean_column" text="Has&#10;pick" />
-         <TableColumn text="Impact&#10;speed" />
-         <TableColumn fx:id="soundtrack_column" text="Soundtrack" />
-         <TableColumn fx:id="minutes_column" text="Minutes of&#10;waiting" />
-         <TableColumn text="Weapon&#10;type" />
-         <TableColumn text="Creation&#10;date" />
-         <TableColumn  text="Owner" />
-         <TableColumn  text="Car" />
-      </columns>
-   </TableView>
+                <Label fx:id="car_description" styleClass="description" text="Car" />
+                <TextField fx:id="car" styleClass="field" />
 
+                <Button fx:id="send_data" mnemonicParsing="false" text="SEND DATA" />
 
-</children>
+            </children>
+        </Pane>
+
+        <TableView fx:id="object_table">
+            <columns>
+                <TableColumn fx:id="idColumn" text="id" />
+                <TableColumn fx:id="nameColumn" text="name" />
+                <TableColumn fx:id="xColumn" styleClass="coordinate_column" text="x" />
+                <TableColumn fx:id="yColumn" styleClass="coordinate_column" text="y" />
+                <TableColumn fx:id="heroColumn" styleClass="boolean_column" text="Real&#10;hero" />
+                <TableColumn fx:id="toothpickColumn" styleClass="boolean_column" text="Has&#10;pick" />
+                <TableColumn fx:id="speedColumn" text="Impact&#10;speed" />
+                <TableColumn fx:id="soundtrackColumn" text="Soundtrack" />
+                <TableColumn fx:id="minutesColumn" text="Minutes of&#10;waiting" />
+                <TableColumn fx:id="weaponTypeColumn" text="Weapon&#10;type" />
+                <TableColumn fx:id="creationDateColumn" text="Creation&#10;date" />
+                <TableColumn fx:id="ownerColumn" text="Owner" />
+                <TableColumn fx:id="carColumn" text="Car" />
+            </columns>
+        </TableView>
+    </children>
 </AnchorPane>

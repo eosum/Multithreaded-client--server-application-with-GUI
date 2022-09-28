@@ -177,7 +177,7 @@ public class ElementInput {
      */
     public HumanBeing createElement(Long id) {
         return new HumanBeing(id, name, new Coordinates(x, y), realHero, hasToothpick, impactSpeed,
-                soundtrack, minutesOfWaiting, weaponType, new Car(car));
+                soundtrack, minutesOfWaiting, weaponType, new Car(car), "lol");
     }
 
     /**
