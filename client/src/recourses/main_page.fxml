@@ -10,14 +10,6 @@
 <?import javafx.scene.control.TableColumn?>
 <AnchorPane prefHeight="960.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-
-      <Pane fx:id="header" prefHeight="70" prefWidth="1000">
-         <children>
-            <Label fx:id="table_description" text="Humanbeing table" />
-            <Button fx:id="to_map" mnemonicParsing="false" text="Go to the map" />
-         </children>
-      </Pane>
-
       <Pane fx:id="commands" prefHeight="131.0" prefWidth="670.0">
          <children>
             <Button fx:id="add" mnemonicParsing="false" text="add" />
@@ -68,19 +60,22 @@
 
    <TableView fx:id="object_table">
       <columns>
-         <TableColumn fx:id="id_column" text="id" />
-         <TableColumn fx:id="name_column" text="name" />
-         <TableColumn styleClass="coordinate_column" text="x" />
-         <TableColumn styleClass="coordinate_column" text="y" />
-         <TableColumn styleClass="boolean_column" text="Real&#10;hero" />
-         <TableColumn styleClass="boolean_column" text="Has&#10;pick" />
-         <TableColumn text="Impact&#10;speed" />
-         <TableColumn fx:id="soundtrack_column" text="Soundtrack" />
-         <TableColumn fx:id="minutes_column" text="Minutes of&#10;waiting" />
-         <TableColumn text="Weapon&#10;type" />
-         <TableColumn text="Creation&#10;date" />
-         <TableColumn  text="Owner" />
-         <TableColumn  text="Car" />
+         <TableColumn styleClass="table_column" text="id" />
+         <TableColumn styleClass="table_column" text="name" />
+         <TableColumn styleClass="table_column" text="x" />
+         <TableColumn styleClass="table_column" text="y" />
+         <TableColumn styleClass="table_column" text="Real hero" />
+         <graphic>
+            <Label alignment="CENTER" text="Team Points (Small Maps)" textAlignment="CENTER" wrapText="true" />
+         </graphic>
+         <TableColumn styleClass="table_column" text="Toothpick" />
+         <TableColumn styleClass="table_column" text="Impact speed" />
+         <TableColumn styleClass="table_column" text="Soundtrack" />
+         <TableColumn styleClass="table_column" text="Minutes of waiting" />
+         <TableColumn styleClass="table_column" text="Weapon type" />
+         <TableColumn styleClass="table_column" text="Creation date" />
+         <TableColumn styleClass="table_column" text="Owner" />
+         <TableColumn styleClass="table_column" text="Car" />
       </columns>
    </TableView>
 
