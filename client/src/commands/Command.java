@@ -1,7 +1,9 @@
 package commands;
 
+import util.DataForSending;
 import util.Request;
+import util.SenderResult;
 
 public interface Command {
-    Request getRequest(String arg);
+    SenderResult getRequest(DataForSending object, Request request);
 }

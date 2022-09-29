@@ -1,13 +1,16 @@
 package commands;
 
+import app.ServerProvider;
+import util.DataForSending;
 import util.Request;
+import util.SenderResult;
 
 public class RemoveGreater implements Command {
-
+    ServerProvider serverProvider = ServerProvider.getServerProvider();
     @Override
-    public Request getRequest(String arg) {
-        Request request = new Request();
-        return request;
+    public SenderResult getRequest(DataForSending object, Request request) {
+        request.setArg(object.getId());
+        return serverProvider.send(request);
     }
 
 }

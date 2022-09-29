@@ -2,6 +2,7 @@ package app;
 
 import util.Request;
 import util.Response;
+import util.SenderResult;
 
 public class ServerProvider {
     private Client client = new Client();
@@ -15,14 +16,15 @@ public class ServerProvider {
         return serverProvider;
     }
 
-    public void send(Request request) {
-        client.sendRequest(request);
+    public SenderResult send(Request request) {
+        return client.sendRequest(request);
     }
 
     public Response getResponse() {
         while (true) {
             Response response = client.getResponse();
             if (response != null) return response;
+            System.out.println("kek");
         }
     }
 

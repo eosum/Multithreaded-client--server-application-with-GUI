@@ -22,10 +22,9 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
     private IntegerProperty minutesOfWaiting; // поле может быть null
     private ObjectProperty<WeaponType> weaponType; // поле может быть null
     private ObjectProperty<Car> car; // поле не может быть null
-    private StringProperty owner;
 
     public HumanBeing(Long id, String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Long impactSpeed,
-                      String soundtrackName, Integer minutesOfWaiting, WeaponType weaponType, Car car, String owner) {
+                      String soundtrackName, Integer minutesOfWaiting, WeaponType weaponType, Car car) {
         this.id = new SimpleLongProperty(id);
         this.name = new SimpleStringProperty(name);
         this.x = new SimpleFloatProperty(coordinates.getX());
@@ -37,7 +36,6 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
         this.minutesOfWaiting = new SimpleIntegerProperty(minutesOfWaiting);
         this.weaponType = new SimpleObjectProperty<>(weaponType);
         this.car = new SimpleObjectProperty<>(car);
-        this.owner = new SimpleStringProperty(owner);
 
         creationDate = new SimpleObjectProperty<>(ZonedDateTime.now());
     }
@@ -52,10 +50,6 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
 
     public FloatProperty getYProperty() {
         return y;
-    }
-
-    public StringProperty getOwnerProperty() {
-        return owner;
     }
 
     public ObjectProperty<WeaponType> getWeaponTypeProperty() {

@@ -1,17 +1,20 @@
 package commands;
 
-import checkCorrectInput.CheckCorrectData;
+import app.ServerProvider;
+import util.DataForSending;
 import util.Request;
+import util.SenderResult;
+import validation.DataValidation;
 
 public class CountLessThanWeaponType implements Command {
+    DataValidation validator = new DataValidation();
+    ServerProvider serverProvider = ServerProvider.getServerProvider();
     @Override
-    public Request getRequest(String arg) {
-        Request request = new Request();
-        CheckCorrectData check = new CheckCorrectData();
-        if (check.checkWeaponType(arg) == 1) {
-            request.setArg(arg);
-            return request;
+    public SenderResult getRequest(DataForSending object, Request request) {
+        if(!validator.validateWeaponType(object.getWeaponType())) {
+            return new SenderResult(false, "Недопустимое значение в Weapon Type");
         }
-        return null;
+        request.setArg(object.getWeaponType());
+        return serverProvider.send(request);
     }
 }

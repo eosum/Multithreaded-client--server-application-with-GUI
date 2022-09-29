@@ -1,17 +1,15 @@
 package commands;
 
-import checkCorrectInput.CheckCorrectData;
+import app.ServerProvider;
+import util.DataForSending;
 import util.Request;
+import util.SenderResult;
 
 public class RemoveByID implements Command {
+    ServerProvider serverProvider = ServerProvider.getServerProvider();
     @Override
-    public Request getRequest(String arg) {
-        Request request = new Request();
-        CheckCorrectData check = new CheckCorrectData();
-        if (check.checkID(arg) == 1) {
-            request.setArg(arg);
-            return request;
-        }
-        return null;
+    public SenderResult getRequest(DataForSending object, Request request) {
+        request.setArg(object.getId());
+        return serverProvider.send(request);
     }
 }

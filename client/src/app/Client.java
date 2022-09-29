@@ -7,6 +7,7 @@ import util.Response;
 import java.io.ObjectOutputStream;
 import java.io.ByteArrayOutputStream;
 import util.Request;
+import util.SenderResult;
 
 import java.time.DateTimeException;
 import java.util.Scanner;
@@ -74,15 +75,16 @@ public class Client {
         }
     }
 
-    public void sendRequest(Request request) {
+    public SenderResult sendRequest(Request request) {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream output = new ObjectOutputStream(byteArrayOutputStream)) {
             output.writeObject(request);
             outputStream.write(byteArrayOutputStream.toByteArray());
         }
         catch (IOException e) {
-            System.out.println("Не удалось отправить данные на сервер");
+            return new SenderResult(false, "Не удалось отправить данные на сервер");
         }
+        return new SenderResult();
     }
 
     public Response getResponse() {

@@ -1,13 +1,22 @@
 package commands;
 
-import input.ElementInput;
+import app.ServerProvider;
+import data.HumanBeing;
+import util.DataForSending;
+import util.DataProcessing;
 import util.Request;
+import util.SenderResult;
 
 public class Add implements Command {
-    public Request getRequest(String arg) {
-        Request request = new Request();
-        ElementInput element = new ElementInput();
-        request.setObject(element.resultElement(0L));
-        return request;
+    ServerProvider serverProvider = ServerProvider.getServerProvider();
+    @Override
+    public SenderResult getRequest(DataForSending object, Request request) {
+        DataProcessing dataProcess = new DataProcessing();
+        HumanBeing result = dataProcess.dataProcessing(object);
+        if (result == null) {
+            return new SenderResult(false, "Проверьте корректность ввода. Также поля не должны быть пустыми");
+        }
+        request.setObject(result);
+        return serverProvider.send(request);
     }
 }

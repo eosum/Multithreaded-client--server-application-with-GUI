@@ -1,22 +1,22 @@
 package commands;
 
-import input.ElementInput;
-import checkCorrectInput.CheckCorrectData;
+import app.ServerProvider;
+import data.HumanBeing;
+import util.DataForSending;
+import util.DataProcessing;
 import util.Request;
+import util.SenderResult;
 
 public class Update implements Command {
+    ServerProvider serverProvider = ServerProvider.getServerProvider();
     @Override
-    public Request getRequest(String arg) {
-        Request request = new Request();
-        CheckCorrectData check = new CheckCorrectData();
-
-        if (check.checkID(arg) == 1) {
-            request.setArg(arg);
-            ElementInput element = new ElementInput();
-            request.setObject(element.resultElement(0L));
-            return request;
+    public SenderResult getRequest(DataForSending object, Request request) {
+        DataProcessing dataProcess = new DataProcessing();
+        HumanBeing result = dataProcess.dataProcessing(object);
+        if (result == null || result.getId() == -1) {
+            return new SenderResult(false, "Проверьте корректность ввода. Также поля не должны быть пустыми");
         }
-
-        return null;
+        request.setObject(result);
+        return serverProvider.send(request);
     }
 }

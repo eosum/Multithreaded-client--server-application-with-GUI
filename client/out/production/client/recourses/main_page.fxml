@@ -38,37 +38,37 @@
         <Pane fx:id="input" prefHeight="450" prefWidth="650">
             <children>
                 <Label fx:id="id_description" styleClass="description" text="ID" />
-                <TextField fx:id="id" styleClass="field" />
+                <TextField fx:id="id" styleClass="field" editable="false" />
 
                 <Label fx:id="name_description" styleClass="description" text="Name" />
-                <TextField fx:id="name" styleClass="field" />
+                <TextField fx:id="name" styleClass="field" editable="false"/>
 
                 <Label fx:id="impact_description" styleClass="description" text="Impact speed" />
-                <TextField fx:id="impact_speed" styleClass="field" />
+                <TextField fx:id="impact_speed" styleClass="field" editable="false"/>
 
                 <Label fx:id="hero_description" styleClass="description" text="Real hero" />
-                <TextField fx:id="real_hero" styleClass="field" />
+                <TextField fx:id="real_hero" styleClass="field" editable="false"/>
 
                 <Label fx:id="toothpick_description" styleClass="description" text="Has toothpick" />
-                <TextField fx:id="has_toothpick" styleClass="field" />
+                <TextField fx:id="has_toothpick" styleClass="field" editable="false"/>
 
                 <Label fx:id="weapon_description" styleClass="description" text="Weapon Type" />
-                <TextField fx:id="weapon_type" styleClass="field" />
+                <TextField fx:id="weapon_type" styleClass="field" editable="false"/>
 
                 <Label fx:id="minutes_description" styleClass="description" text="Minutes of waiting" />
-                <TextField fx:id="minutes_of_waiting" styleClass="field" />
+                <TextField fx:id="minutes_of_waiting" styleClass="field" editable="false"/>
 
                 <Label fx:id="x_description" styleClass="description" text="X" />
-                <TextField fx:id="x" styleClass="field" />
+                <TextField fx:id="x" styleClass="field" editable="false"/>
 
                 <Label fx:id="y_description" styleClass="description" text="Y" />
-                <TextField fx:id="y" styleClass="field" />
+                <TextField fx:id="y" styleClass="field" editable="false"/>
 
                 <Label fx:id="soundtrack_description" styleClass="description" text="Soundtrack" />
-                <TextField fx:id="soundtrack" styleClass="field" />
+                <TextField fx:id="soundtrack" styleClass="field" editable="false"/>
 
                 <Label fx:id="car_description" styleClass="description" text="Car" />
-                <TextField fx:id="car" styleClass="field" />
+                <TextField fx:id="car" styleClass="field" editable="false"/>
 
                 <Button fx:id="send_data" mnemonicParsing="false" text="SEND DATA" />
 
