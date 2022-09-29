@@ -84,6 +84,13 @@ public class DatabaseManager implements DataDAO {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setLong(1, id);
         preparedStatement.setString(2, user);
+        return preparedStatement.executeUpdate() == 1;
+    }
+
+    public Boolean removeAll(String user) throws SQLException {
+        String sql = "delete from character where owner = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, user);
         return preparedStatement.executeUpdate() > 0;
     }
 }

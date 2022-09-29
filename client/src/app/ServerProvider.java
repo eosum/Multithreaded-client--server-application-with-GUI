@@ -5,17 +5,18 @@ import util.Response;
 import util.SenderResult;
 
 public class ServerProvider {
-    private static Client client = new Client();
-    private static ServerProvider serverProvider = new ServerProvider();
+    private Client client = new Client();
+    private static ServerProvider serverProvider;
 
     private ServerProvider() {
         client.connect();
     }
 
     public static ServerProvider getServerProvider() {
+        if (serverProvider == null) serverProvider = new ServerProvider();
         return serverProvider;
     }
-    public static Client getClient() {
+    public Client getClient() {
         return client;
     }
 
@@ -27,7 +28,6 @@ public class ServerProvider {
         while (true) {
             Response response = client.getResponse();
             if (response != null) return response;
-            System.out.println("kek");
         }
     }
 

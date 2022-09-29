@@ -2,10 +2,9 @@ package app;
 
 import data.*;
 import database.DatabaseManager;
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -18,7 +17,7 @@ import java.util.LinkedList;
 public class CollectionManager {
     LinkedList<HumanBeing> collection = new LinkedList<>();
     private final DatabaseManager databaseManager = new DatabaseManager();
-    ZonedDateTime initTime = ZonedDateTime.now();
+    LocalDate initTime = LocalDate.now();
 
 
     /**
@@ -28,10 +27,9 @@ public class CollectionManager {
      */
     public synchronized boolean add(HumanBeing element, String owner) {
         try {
-            Long id = databaseManager.add(element, "lol");
+            Long id = databaseManager.add(element, owner);
             element.setId(id);
             collection.add(element);
-            System.out.println(collection);
             return true;
         }
         catch (SQLException e) {
@@ -66,17 +64,22 @@ public class CollectionManager {
      */
     public synchronized boolean clear(String user) {
         try {
-            for (HumanBeing element: collection) {
-                if (databaseManager.remove(element.getId(), user)) {
-                    collection.remove(element);
-                }
+            if (databaseManager.removeAll(user)) {
+                collection.removeIf(humanBeing -> humanBeing.getOwner().equals(user));
             }
             return true;
         }
         catch (SQLException e) {
-            System.out.println();
+            System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public String info() {
+        String result = "Тип - " + collection.getClass() + "\n"
+                + "Кол-во элементов - " + collection.size() + "\n"
+                + "Дата инициализации - " + initTime;
+        return result;
     }
 
     /**
@@ -92,34 +95,6 @@ public class CollectionManager {
             }
         }
         return "Количество элементов = " + amount;
-    }
-
-    /**
-     * Find elements with given substring and print them
-     *
-     * @param subString substring to be found
-     */
-    public synchronized LinkedList<? extends Serializable> filterStartsWithSoundtrackName(String subString) {
-        return (LinkedList<? extends Serializable>) collection.stream()
-                .filter(element -> element.getSoundtrackName().startsWith(subString));
-    }
-
-    /**
-     *
-     * Print an information about collection
-     */
-    public String info() {
-        return " - команда выполнена успешно. '\n' Тип - " + collection.getClass() + "\n"
-                + "Количество элементов - " + collection.size() + "\n"
-                + "Дата инициализации - " + initTime;
-    }
-
-    /**
-     * Print the collection in ascending order
-     */
-    public synchronized LinkedList<? extends Serializable> printAscending() {
-        collection.sort(Comparator.comparing(HumanBeing::getId));
-        return collection;
     }
 
     /**
@@ -179,23 +154,10 @@ public class CollectionManager {
         return "Команда выполнена";
     }
 
-    /**
-     * Print the collection
-     */
-    public synchronized LinkedList<? extends Serializable> show() {
-        return new LinkedList<>(collection);
-    }
-
-    /**
-     * Updating element's data
-     *
-     * @param updateID id to update the item by
-     */
-    public synchronized String updateById(Long updateID, HumanBeing object, String user) {
+    public synchronized String updateById(HumanBeing object, String user) {
         try {
-            if(databaseManager.update(object, updateID, user)) {
-                object.setId(updateID);
-                collection.removeIf(element -> element.getId() == updateID);
+            if(databaseManager.update(object, object.getId(), user)) {
+                collection.removeIf(element -> element.getId() == object.getId());
                 collection.add(object);
                 return "Команда выполнена";
             }
@@ -231,6 +193,7 @@ public class CollectionManager {
         catch (SQLException e) {
             System.out.println("Коллекция неинициализирована");
         }
+        result.sort(Comparator.naturalOrder());
         return result;
     }
 

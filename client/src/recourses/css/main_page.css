@@ -35,12 +35,6 @@
     -fx-cursor: hand;
 }
 
-#update {
-    -fx-translate-x: 440px;
-    -fx-translate-y: 92px;
-    -fx-pref-width: 90px;
-}
-
 #remove_greater {
     -fx-translate-x: 170px;
     -fx-translate-y: 92px;
@@ -53,7 +47,7 @@
     -fx-pref-width: 153px;
 }
 
-#show {
+#info {
     -fx-translate-x: 357px;
     -fx-translate-y: 92px;
     -fx-pref-width: 75px;
@@ -71,16 +65,10 @@
     -fx-pref-width: 75px;
 }
 
-#info {
+#update {
     -fx-translate-x: 400px;
     -fx-translate-y: 45px;
-    -fx-pref-width: 75px;
-}
-
-#print_ascending {
-    -fx-translate-x: 482px;
-    -fx-translate-y: 45px;
-    -fx-pref-width: 190px;
+    -fx-pref-width: 100px;
 }
 
 #clear {
@@ -104,7 +92,7 @@
 }
 
 #input {
-    -fx-translate-x: 830px;
+    -fx-translate-x: 770px;
 }
 
 .button:focused {
@@ -326,6 +314,22 @@
     -fx-background-insets: 0, 4 0 0 0;
     -fx-text-fill: #777;
     -fx-font-size: 15px;
+}
+
+.text-area {
+    -fx-background-color: #232531;
+    -fx-translate-x: 143px;
+    -fx-translate-y: 690px;
+    -fx-pref-width: 650px;
+    -fx-pref-height: 240px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-background-radius: 0px;
+}
+
+.text-area .content {
+    -fx-background-color: #232531;
+    -fx-background-radius: 0px;
 }
 
 

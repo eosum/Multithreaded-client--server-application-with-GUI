@@ -12,13 +12,12 @@ public class CommandList {
 
     public CommandList() {
         commands.put("add", new Add());
-        commands.put("info", new Info());
         commands.put("update", new Update());
         commands.put("remove_by_id", new RemoveByID());
         commands.put("clear", new Clear());
         commands.put("remove_first", new RemoveFirst());
-        commands.put("filter_starts_with_soundtrack_name", new FilterStartsWithSoundtrack());
         commands.put("count_less_than_weapon_type", new CountLessThanWeaponType());
+        commands.put("info", new Info());
         commands.put("remove_greater", new RemoveGreater());
         commands.put("add_if_min", new AddIfMin());
         commands.put("help", new Help());

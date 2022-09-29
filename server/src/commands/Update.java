@@ -17,8 +17,7 @@ public class Update implements Command {
     }
 
     public void execute(String args, HumanBeing object, UserInfo userInfo, Response response) {
-        final Long id = Long.parseLong(args);
-        response.setMessage(collectionManager.updateById(id, object, userInfo.getUser()));
+        response.setMessage(collectionManager.updateById(object, userInfo.getUser()));
         Server.sendResponse(response, response.getKey());
     }
 

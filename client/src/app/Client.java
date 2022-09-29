@@ -42,27 +42,16 @@ public class Client {
         }
     }
 
-    public boolean reconnect() {
-        int number = 1;
-        while (!connect()) {
-            System.out.println("Переподключение к серверу...");
-            System.out.println("Попытка № " + number);
-            if (number % 3 == 0) {
-                System.out.println("Продолжить подключение? Введите 'Да' или 'Нет' с заглавной буквы");
-                Scanner input = new Scanner(System.in);
-                String choose = input.nextLine();
-                if (choose.equals("Нет")) {
-                    return false;
-                }
-            }
-            number++;
-        }
-        return true;
-    }
-
-    public boolean isConnected() {
-        return socket.isConnected();
-    }
+//    public boolean reconnect() {
+//        while (!connect()) {
+//            System.out.println("Переподключение к серверу...");
+//        }
+//        return true;
+//    }
+//
+//    public boolean isConnected() {
+//        return socket.isConnected();
+//    }
 
     public void close() {
         try {
@@ -75,8 +64,8 @@ public class Client {
         }
     }
 
-    public synchronized SenderResult sendRequest(Request request) {
-
+    public SenderResult sendRequest(Request request) {
+        request.setUser("lol");
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream output = new ObjectOutputStream(byteArrayOutputStream)) {
             output.writeObject(request);
@@ -84,7 +73,6 @@ public class Client {
         }
         catch (IOException e) {
             System.out.println(e.getMessage());
-            System.out.println("Are u serious");
             return new SenderResult(false, "Не удалось отправить данные на сервер");
         }
         return new SenderResult();
@@ -110,6 +98,7 @@ public class Client {
         }
         return response;
     }
+
 
 
 

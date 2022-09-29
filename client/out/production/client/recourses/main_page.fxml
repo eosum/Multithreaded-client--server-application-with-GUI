@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextArea?>
 <AnchorPane prefHeight="960.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
     <children>
 
@@ -24,14 +25,12 @@
                 <Button fx:id="add_if_min" mnemonicParsing="false" text="add if min" />
                 <Button fx:id="remove_by_id" mnemonicParsing="false" text="remove by id" />
                 <Button fx:id="clear" mnemonicParsing="false" text="clear" />
-                <Button fx:id="info" mnemonicParsing="false" text="info" />
+                <Button fx:id="update" mnemonicParsing="false" text="update" />
                 <Button fx:id="count_than_less" mnemonicParsing="false" text="count less than weapon type" />
                 <Button fx:id="remove_first" mnemonicParsing="false" text="remove first" />
-                <Button fx:id="print_ascending" mnemonicParsing="false" text="print ascending" />
                 <Button fx:id="help" mnemonicParsing="false" text="help" />
-                <Button fx:id="show" mnemonicParsing="false" text="show" />
+                <Button fx:id="info" mnemonicParsing="false" text="info" />
                 <Button fx:id="remove_greater" mnemonicParsing="false" text="remove greater" />
-                <Button fx:id="update" mnemonicParsing="false" text="update" />
             </children>
         </Pane>
 
@@ -92,5 +91,6 @@
                 <TableColumn fx:id="carColumn" text="Car" />
             </columns>
         </TableView>
+    <TextArea fx:id="outputField" />
     </children>
 </AnchorPane>

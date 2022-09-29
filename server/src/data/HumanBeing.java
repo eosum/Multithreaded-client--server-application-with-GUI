@@ -1,6 +1,7 @@
 package data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 /**
@@ -11,7 +12,7 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
     private Long id; // поле не может быть null, значение генерируется автоматически, уникально, > 0
     private String name; // поле не может быть 0, строка не пустая
     private Coordinates coordinates; // поле не может быть null
-    private java.time.ZonedDateTime creationDate; //
+    private LocalDate creationDate; //
     private Boolean realHero; // поле не может быть null
     private Boolean hasToothpick; // поле может быть null
     private Long impactSpeed; // поле может быть null
@@ -35,9 +36,12 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
         this.car = car;
         this.owner = owner;
 
-        creationDate = ZonedDateTime.now();
+        creationDate = LocalDate.now();
     }
 
+    public String getOwner() {
+        return owner;
+    }
     /**
      * @return x coordinate
      */
@@ -55,7 +59,7 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
     /**
      * @return creation date
      */
-    public ZonedDateTime getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 

@@ -26,6 +26,7 @@ public class CommandsList {
         commands.put("update", new Update(collectionManager));
         commands.put("remove_by_id", new RemoveById(collectionManager));
         commands.put("clear", new Clear(collectionManager));
+        commands.put("info", new Info(collectionManager));
         commands.put("remove_first", new RemoveFirst(collectionManager));
         commands.put("count_less_than_weapon_type", new CountLessThanWeaponType(collectionManager));
         commands.put("remove_greater", new RemoveGreater(collectionManager));
