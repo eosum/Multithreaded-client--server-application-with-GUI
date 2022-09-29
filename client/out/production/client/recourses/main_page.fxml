@@ -38,7 +38,7 @@
         <Pane fx:id="input" prefHeight="450" prefWidth="650">
             <children>
                 <Label fx:id="id_description" styleClass="description" text="ID" />
-                <TextField fx:id="id" styleClass="field" editable="false" />
+                <TextField fx:id="id" styleClass="field" editable="false"/>
 
                 <Label fx:id="name_description" styleClass="description" text="Name" />
                 <TextField fx:id="name" styleClass="field" editable="false"/>

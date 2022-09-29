@@ -75,13 +75,16 @@ public class Client {
         }
     }
 
-    public SenderResult sendRequest(Request request) {
+    public synchronized SenderResult sendRequest(Request request) {
+
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream output = new ObjectOutputStream(byteArrayOutputStream)) {
             output.writeObject(request);
             outputStream.write(byteArrayOutputStream.toByteArray());
         }
         catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Are u serious");
             return new SenderResult(false, "Не удалось отправить данные на сервер");
         }
         return new SenderResult();
@@ -89,7 +92,7 @@ public class Client {
 
     public Response getResponse() {
         Response response = null;
-        final ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
         try {
             inputStream.read(buffer.array());
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer.array());
@@ -107,4 +110,7 @@ public class Client {
         }
         return response;
     }
+
+
+
 }

@@ -54,7 +54,7 @@ public class DatabaseManager implements DataDAO {
         preparedStatement.setString(7, element.getSoundtrackName());
         preparedStatement.setInt(8, element.getMinutesOfWaiting());
         preparedStatement.setString(9, element.getWeaponType());
-        preparedStatement.setString(10, element.getCar());
+        preparedStatement.setString(10, element.getCar().toString());
         preparedStatement.setString(11, owner);
         ResultSet result = preparedStatement.executeQuery();
         result.next();
@@ -74,7 +74,7 @@ public class DatabaseManager implements DataDAO {
         preparedStatement.setString(7, element.getSoundtrackName());
         preparedStatement.setInt(8, element.getMinutesOfWaiting());
         preparedStatement.setString(9, element.getWeaponType());
-        preparedStatement.setString(10, element.getCar());
+        preparedStatement.setString(10, element.getCar().toString());
         preparedStatement.setLong(11, id);
         preparedStatement.setString(12, user);
         return preparedStatement.executeUpdate() > 0;

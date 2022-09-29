@@ -5,7 +5,7 @@ import util.Response;
 import util.SenderResult;
 
 public class ServerProvider {
-    private Client client = new Client();
+    private static Client client = new Client();
     private static ServerProvider serverProvider = new ServerProvider();
 
     private ServerProvider() {
@@ -14,6 +14,9 @@ public class ServerProvider {
 
     public static ServerProvider getServerProvider() {
         return serverProvider;
+    }
+    public static Client getClient() {
+        return client;
     }
 
     public SenderResult send(Request request) {

@@ -28,9 +28,10 @@ public class CollectionManager {
      */
     public synchronized boolean add(HumanBeing element, String owner) {
         try {
-            Long id = databaseManager.add(element, owner);
+            Long id = databaseManager.add(element, "lol");
             element.setId(id);
             collection.add(element);
+            System.out.println(collection);
             return true;
         }
         catch (SQLException e) {
@@ -205,30 +206,40 @@ public class CollectionManager {
         }
     }
 
-    public String collection_initialization() {
+    public LinkedList<HumanBeing> getDatafromDB() {
+        LinkedList<HumanBeing> result = new LinkedList<>();
         try {
             ResultSet collectionFromDB = databaseManager.getFromDB();
             while(collectionFromDB.next()) {
                 HumanBeing element = new HumanBeing(
-                    collectionFromDB.getLong("id"),
-                    collectionFromDB.getString("name"),
-                    new Coordinates(collectionFromDB.getFloat("coordinate_x"),
-                            collectionFromDB.getFloat("coordinate_y")),
-                    collectionFromDB.getBoolean("real_hero"),
-                    collectionFromDB.getBoolean("has_toothpick"),
-                    collectionFromDB.getLong("impact_speed"),
-                    collectionFromDB.getString("soundtrack"),
-                    collectionFromDB.getInt("minutes_of_waiting"),
-                    WeaponType.getWeaponType(collectionFromDB.getString("weapon_type")),
-                    new Car(collectionFromDB.getString("car"))
+                        collectionFromDB.getLong("id"),
+                        collectionFromDB.getString("name"),
+                        new Coordinates(collectionFromDB.getFloat("coordinate_x"),
+                                collectionFromDB.getFloat("coordinate_y")),
+                        collectionFromDB.getBoolean("real_hero"),
+                        collectionFromDB.getBoolean("has_toothpick"),
+                        collectionFromDB.getLong("impact_speed"),
+                        collectionFromDB.getString("soundtrack"),
+                        collectionFromDB.getInt("minutes_of_waiting"),
+                        WeaponType.getWeaponType(collectionFromDB.getString("weapon_type")),
+                        new Car(collectionFromDB.getString("car")),
+                        collectionFromDB.getString("owner")
                 );
-                collection.add(element);
+                result.add(element);
             }
-            return "Коллекция инициализирована";
         }
         catch (SQLException e) {
-            return e.getMessage();
+            System.out.println("Коллекция неинициализирована");
         }
+        return result;
+    }
+
+    public void collection_initialization() {
+        collection = getDatafromDB();
+    }
+
+    public LinkedList<HumanBeing> getData() {
+        return getDatafromDB();
     }
 }
 

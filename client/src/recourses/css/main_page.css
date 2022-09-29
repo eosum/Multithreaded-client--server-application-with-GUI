@@ -107,6 +107,11 @@
     -fx-translate-x: 830px;
 }
 
+.button:focused {
+    -fx-background-color: #ff5733;
+    -fx-border-color: #ff5733;
+}
+
 .field {
     -fx-background-color: transparent;
     -fx-text-fill: #ffffff;

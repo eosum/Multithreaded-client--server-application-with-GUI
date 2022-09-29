@@ -19,9 +19,10 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
     private Integer minutesOfWaiting; // поле может быть null
     private WeaponType weaponType; // поле может быть null
     private Car car; // поле не может быть null
+    private String owner;
 
     public HumanBeing(Long id, String name, Coordinates coordinates, Boolean realHero, Boolean hasToothpick, Long impactSpeed,
-                      String soundtrackName, Integer minutesOfWaiting, WeaponType weaponType, Car car) {
+                      String soundtrackName, Integer minutesOfWaiting, WeaponType weaponType, Car car, String owner) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -32,6 +33,8 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
         this.minutesOfWaiting = minutesOfWaiting;
         this.weaponType = weaponType;
         this.car = car;
+        this.owner = owner;
+
         creationDate = ZonedDateTime.now();
     }
 
@@ -59,8 +62,8 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
     /**
      * @return the brand of the car
      */
-    public String getCar() {
-        return car.toString();
+    public Car getCar() {
+        return car;
     }
 
     /**
