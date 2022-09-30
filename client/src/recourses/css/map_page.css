@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/robotomono/static/RobotoMono-Regular.ttf');
+}
+
+.root {
+    -fx-background-color: #232531;
+    -fx-font-family: "Roboto Mono";
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-border-color: #999;
+}
+
+.button:hover {
+    -fx-text-fill: #666;
+    -fx-cursor: hand;
+}
+
+
+#toMainPageButton {
+    -fx-translate-x: 630px;
+    -fx-translate-y: 28px;
+}
