@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/robotomono/static/RobotoMono-Regular.ttf');
+}
+
+.root {
+    -fx-background-color: #232531;
+    -fx-font-family: "Roboto Mono";
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-border-color: #999;
+}
+
+.button:hover {
+    -fx-text-fill: #666;
+    -fx-cursor: hand;
+}
+
+
+#toMainPageButton {
+    -fx-translate-x: 630px;
+    -fx-translate-y: 28px;
+}
+
+#map {
+    -fx-translate-y: 40px;
+}
+
+#languageChoose {
+    -fx-translate-x: 1374px;
+    -fx-pref-width: 126px;
+    -fx-background-color: #ff5733;
+}
+
+.cell {
+    -fx-alignment: center;
+    -fx-background-color: #232531, #333645;
+    -fx-background-insets: 0, 4 0 0 0;
+    -fx-text-fill: #777;
+    -fx-font-size: 15px;
+}
+
+.text-area {
+    -fx-background-color: #232531;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 340px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-background-radius: 0px;
+    -fx-border-width: 1px;
+    -fx-border-color: #999;
+    -fx-border-radius: 15px;
+}
+
+.text-area .content {
+    -fx-background-color: #232531;
+    -fx-background-radius: 0px;
+}

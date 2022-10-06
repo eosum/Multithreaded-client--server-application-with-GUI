@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/robotomono/static/RobotoMono-Regular.ttf');
+}
+
+.root {
+    -fx-background-color: #232531;
+    -fx-font-family: "Roboto Mono";
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+}
+
+#realHeroLabel {
+    -fx-translate-y: 20px;
+    -fx-translate-x: 20px;
+}
+
+#hasToothpickLabel {
+    -fx-translate-y: 60px;
+    -fx-translate-x: 20px;
+}
+
+#weaponTypeLabel {
+    -fx-translate-y: 100px;
+    -fx-translate-x: 20px;
+}
+
+#xLabel {
+    -fx-translate-y: 140px;
+    -fx-translate-x: 20px;
+}
+
+#yLabel {
+    -fx-translate-y: 180px;
+    -fx-translate-x: 20px;
+}
+
+#infoLabel {
+    -fx-translate-y: 260px;
+    -fx-translate-x: 20px;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-border-color: #999;
+}
+
+.button:hover {
+    -fx-text-fill: #666;
+    -fx-cursor: hand;
+}
+
+#backButton {
+    -fx-translate-y: 390px;
+    -fx-translate-x: 250px;
+    -fx-text-fill: #ff5733;
+    -fx-font-size: 18px;
+}
+
+#languageChoose {
+    -fx-translate-x: 640px;
+    -fx-pref-width: 126px;
+    -fx-background-color: #ff5733;
+}
+
+.cell {
+    -fx-alignment: center;
+    -fx-background-color: #232531, #333645;
+    -fx-background-insets: 0, 4 0 0 0;
+    -fx-text-fill: #777;
+    -fx-font-size: 15px;
+}
+
+.text-area {
+    -fx-background-color: #232531;
+    -fx-translate-x: 143px;
+    -fx-translate-y: 690px;
+    -fx-pref-width: 630px;
+    -fx-pref-height: 240px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-background-radius: 0px;
+}
+
+.text-area .content {
+    -fx-background-color: #232531;
+    -fx-background-radius: 0px;
+}

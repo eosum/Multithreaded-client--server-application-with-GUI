@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane fx:id="body" prefHeight="560" prefWidth="766" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_package.controllers.AuthorizationController">
+   <children>
+      <ComboBox fx:id="languageChoose"/>
+      <Pane layoutX="179.0" layoutY="96.0" prefHeight="334.0" prefWidth="354.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="96.0">
+         <children>
+            <Label fx:id="page_name" alignment="TOP_CENTER" text="%pageAuthorizationTitle" />
+            <Button fx:id="sign_up_button" mnemonicParsing="false" text="%signButton" />
+            <Button fx:id="log_in_button" mnemonicParsing="false" text="%loginButton" />
+            <PasswordField fx:id="password" styleClass="field" />
+            <TextField fx:id="login" styleClass="field" />
+            <Label fx:id="login_description" styleClass="description" text="%login" />
+            <Label fx:id="password_description" styleClass="description" text="%password" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
