@@ -19,6 +19,8 @@ import java.util.Locale;
 public class MainPageController {
 
     @FXML
+    private Label loginInfo;
+    @FXML
     private ComboBox languageChoose;
 
     @FXML
@@ -129,6 +131,7 @@ public class MainPageController {
     private void initialize() {
         userInfo = AuthorizationController.getUserInfo();
 //      userInfo = new UserInfo("lol", "1");
+        loginInfo.setText(SceneSwitch.getResourceBundle().getString("userLogin") + userInfo.getUserLogin());
         validateFields();
         getHumanBeingObjects();
         tablePreparing();

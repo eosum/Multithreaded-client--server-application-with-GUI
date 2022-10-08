@@ -18,6 +18,7 @@
             <children>
                 <Label fx:id="tableDescription" text="%table" />
                 <Button fx:id="toMap" mnemonicParsing="false" text="%mapButton" />
+                <Label fx:id="loginInfo"/>
             </children>
         </Pane>
 
