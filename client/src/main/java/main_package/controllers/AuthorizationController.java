@@ -42,7 +42,7 @@ public class AuthorizationController {
         return request;
     }
 
-    private void alertForming(String message) {
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
         alert.showAndWait();
@@ -96,11 +96,15 @@ public class AuthorizationController {
                     SceneSwitch.show();
                 }
                 else {
-                    alertForming(response.getMessage());
+                    showAlert(response.getMessage());
                 }
             }
+            catch (NullPointerException e) {
+                showAlert("Нет соединения с сервером. Попробуйте позже.");
+                serverProvider.reconnect();
+            }
             catch (IOException e) {
-                System.out.println(e.getMessage());
+                showAlert("Ошибка в работе приложения");
             }
         });
 
@@ -113,11 +117,15 @@ public class AuthorizationController {
                     SceneSwitch.show();
                 }
                 else {
-                    alertForming(response.getMessage());
+                    showAlert(response.getMessage());
                 }
             }
+            catch (NullPointerException e) {
+                showAlert("Нет соединения с сервером. Попробуйте позже.");
+                serverProvider.reconnect();
+            }
             catch (IOException e) {
-                System.out.println(e.getMessage());
+                showAlert("Ошибка в работе приложения");
             }
         });
     }

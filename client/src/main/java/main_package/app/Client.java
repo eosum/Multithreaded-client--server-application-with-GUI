@@ -41,16 +41,9 @@ public class Client {
         }
     }
 
-//    public boolean reconnect() {
-//        while (!connect()) {
-//            System.out.println("Переподключение к серверу...");
-//        }
-//        return true;
-//    }
-//
-//    public boolean isConnected() {
-//        return socket.isConnected();
-//    }
+    public void reconnect() {
+        connect();
+    }
 
     public void close() {
         try {
@@ -76,7 +69,7 @@ public class Client {
         return new SenderResult();
     }
 
-    public Response getResponse() {
+    public Response getResponse() throws NullPointerException, IOException{
         Response response = null;
         ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
         try {
@@ -84,9 +77,6 @@ public class Client {
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer.array());
             ObjectInputStream input = new ObjectInputStream(byteArrayInputStream);
             response = (Response)input.readObject();
-        }
-        catch (IOException | NullPointerException e) {
-            System.out.println("Ошибка получения данных с сервера");
         }
         catch (ClassNotFoundException e) {
             System.out.println("Некорреткные данные с сервера");

@@ -143,19 +143,16 @@ public class MapController {
 
                 try {
                     client.sendRequest(request);
-
                     while (response == null) {
                         response = client.getResponse();
                     }
                 }
-                catch (NullPointerException e) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText(e.getMessage());
-                    alert.showAndWait();
-                    System.exit(0);
+                catch (NullPointerException | IOException e) {
+                    System.out.println("Нет соединения с сервером. Попробуйте позже.");
+                    serverProvider.reconnect();
                 }
 
-                if (response.getObject() != null) {
+                if (response != null && response.getObject() != null) {
                     synchronized (currentObjects) {
                         currentObjects = response.getObject();
                     }

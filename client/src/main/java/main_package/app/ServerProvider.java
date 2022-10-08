@@ -5,18 +5,22 @@ import main_package.util.Request;
 import main_package.util.Response;
 import main_package.util.SenderResult;
 
+import java.io.IOException;
+
 public class ServerProvider {
     private Client client = new Client();
     private static ServerProvider serverProvider;
 
     private ServerProvider() {
-        int attempt = 0;
+        client.connect();
+        /*int attempt = 0;
         while(!client.connect()) {
             attempt++;
             if(attempt ==  5) {
                 System.exit(0);
             }
-        }
+        }*/
+
     }
 
     public static ServerProvider getServerProvider() {
@@ -31,11 +35,15 @@ public class ServerProvider {
         return client.sendRequest(request);
     }
 
-    public Response getResponse() {
+    public Response getResponse() throws NullPointerException, IOException {
         while (true) {
             Response response = client.getResponse();
             if (response != null) return response;
         }
+    }
+
+    public void reconnect() {
+        client.reconnect();
     }
 
 }

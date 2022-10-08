@@ -1,5 +1,6 @@
 package main_package.controllers;
 
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Popup;
@@ -232,13 +233,25 @@ public class MainPageController {
                     showAlert(result.getMessage());
                 }
                 else {
-                    Response response = serverProvider.getResponse();
+                    Response response = null;
+                    try {
+                        response = serverProvider.getResponse();
+                    }
+                    catch (NullPointerException e) {
+                        showAlert("Нет соединения с сервером. Попробуйте позже.");
+                        serverProvider.reconnect();
+                    }
+                    catch (IOException e) {
+                        showAlert("Ошибка в работе приложения");
+                        serverProvider.reconnect();
+                    }
+
                     if(response.isSuccess()) {
                         outputField.setText(SceneSwitch.getResourceBundle().getString("successRequest"));
                         if(response.getMessage() != null) {
                             String[] parts = response.getMessage().split(" ");
-                            if (parts.length == 3) {
-                                outputField.setText(SceneSwitch.getResourceBundle().getString("date") + " " + parts[0] + '\n'
+                            if (parts.length == 4) {
+                                outputField.setText(SceneSwitch.getResourceBundle().getString("date") + " " + parts[3] + '\n'
                                         + SceneSwitch.getResourceBundle().getString("number") + " " + parts[2] + '\n'
                                         + SceneSwitch.getResourceBundle().getString("typeCollection") + " " + parts[1]);
                             } else {
@@ -338,20 +351,19 @@ public class MainPageController {
                 Request request = new Request();
                 Response response = null;
                 request.setCommand("get_data");
-                client.sendRequest(request);
+
                 try {
-
-
+                    client.sendRequest(request);
                     while (response == null) {
                         response = client.getResponse();
                     }
                 }
-                catch (NullPointerException e) {
-                    showAlert(e.getMessage());
-                    System.exit(0);
+                catch (NullPointerException | IOException e) {
+                    System.out.println("Нет соединения с сервером. Попробуйте позже.");
+                    serverProvider.reconnect();
                 }
 
-                if (response.getObject() != null) {
+                if (response != null && response.getObject() != null) {
                     objectTable.getItems().clear();
                     for(HumanBeing element: response.getObject()) {
                         HumanBeingProperty result = new HumanBeingProperty(
@@ -379,18 +391,23 @@ public class MainPageController {
     }
 
     private void fillTextFields() {
-        HumanBeingProperty row = objectTable.getSelectionModel().getSelectedItem();
-        id.setText(row.getId().toString());
-        name.setText(row.getName());
-        impact_speed.setText(row.getImpactSpeed().toString());
-        real_hero.setText(row.getRealHero().toString());
-        has_toothpick.setText(row.getHasToothpick().toString());
-        weapon_type.setText(row.getWeaponType());
-        minutes_of_waiting.setText(row.getMinutesOfWaiting().toString());
-        x.setText(row.getX().toString());
-        y.setText(row.getY().toString());
-        soundtrack.setText(row.getSoundtrackName());
-        car.setText(row.getCar().toString());
+        try {
+            HumanBeingProperty row = objectTable.getSelectionModel().getSelectedItem();
+            id.setText(row.getId().toString());
+            name.setText(row.getName());
+            impact_speed.setText(row.getImpactSpeed().toString());
+            real_hero.setText(row.getRealHero().toString());
+            has_toothpick.setText(row.getHasToothpick().toString());
+            weapon_type.setText(row.getWeaponType());
+            minutes_of_waiting.setText(row.getMinutesOfWaiting().toString());
+            x.setText(row.getX().toString());
+            y.setText(row.getY().toString());
+            soundtrack.setText(row.getSoundtrackName());
+            car.setText(row.getCar().toString());
+        }
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

@@ -8,13 +8,13 @@
 <AnchorPane fx:id="body" prefHeight="560" prefWidth="766" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_package.controllers.HelpController">
     <children>
         <ComboBox fx:id="languageChoose"/>
-        <Label fx:id="realHeroLabel" text="REAL HERO: only boolean. Print true or false" />
-        <Label fx:id="hasToothpickLabel" text="HAS TOOTHPICK: only boolean. Print true or false" />
-        <Label fx:id="weaponTypeLabel" text="WEAPON TYPE - only 4 options: BAT, KNIFE, HUMMER, SHOTGUN" />
-        <Label fx:id="xLabel" text="X: the value should be in the following range: [0; 1400]" />
-        <Label fx:id="yLabel" text="Y: the value should be in the following range: [0; 900]" />
-        <Label fx:id="infoLabel" text="NB: Fields that are open for writing should not be empty!" />
+        <Label fx:id="realHeroLabel" text="%realHeroHelp" />
+        <Label fx:id="hasToothpickLabel" text="%toothpickHelp" />
+        <Label fx:id="weaponTypeLabel" text="%weaponTypeHelp" />
+        <Label fx:id="xLabel" text="%xHelp" />
+        <Label fx:id="yLabel" text="%yHelp" />
+        <Label fx:id="infoLabel" text="%infoHelp" />
 
-        <Button fx:id="backButton" mnemonicParsing="false" text="Back to the main page" />
+        <Button fx:id="backButton" mnemonicParsing="false" text="%goBackButton" />
     </children>
 </AnchorPane>
