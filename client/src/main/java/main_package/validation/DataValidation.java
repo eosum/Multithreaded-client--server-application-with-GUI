@@ -5,7 +5,7 @@ import main_package.data.*;
 public class DataValidation {
 
     public boolean validateString(String text) {
-        return text != null && !text.equals("");
+        return text != null && !text.equals("") && text.length() <= 10;
     }
 
     public boolean validateBoolean(String text) {

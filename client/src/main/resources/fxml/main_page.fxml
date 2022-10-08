@@ -18,7 +18,6 @@
             <children>
                 <Label fx:id="tableDescription" text="%table" />
                 <Button fx:id="toMap" mnemonicParsing="false" text="%mapButton" />
-                <Label fx:id="loginInfo"/>
             </children>
         </Pane>
 
@@ -109,6 +108,7 @@
                 <TextField fx:id="soundtrack" editable="false"
                            GridPane.columnIndex="2" GridPane.rowIndex="5" />
             </children>
+            <Label fx:id="loginInfo"/>
             <Button fx:id="sendData" mnemonicParsing="false" text="%sendButton" />
         </GridPane>
 
