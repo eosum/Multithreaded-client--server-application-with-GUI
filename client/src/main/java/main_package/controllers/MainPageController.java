@@ -1,12 +1,8 @@
 package main_package.controllers;
 
-import javafx.application.Platform;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Popup;
-import main_package.app.Client;
+import main_package.serverConnection.Client;
 import main_package.app.CommandList;
-import main_package.app.ServerProvider;
+import main_package.serverConnection.ServerProvider;
 import main_package.data.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +14,6 @@ import main_package.validation.FieldsValidation;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class MainPageController {
 
@@ -237,12 +232,8 @@ public class MainPageController {
                     try {
                         response = serverProvider.getResponse();
                     }
-                    catch (NullPointerException e) {
-                        showAlert("Нет соединения с сервером. Попробуйте позже.");
-                        serverProvider.reconnect();
-                    }
-                    catch (IOException e) {
-                        showAlert("Ошибка в работе приложения");
+                    catch (NullPointerException | IOException e) {
+                        showAlert(SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
                         serverProvider.reconnect();
                     }
 
@@ -359,7 +350,7 @@ public class MainPageController {
                     }
                 }
                 catch (NullPointerException | IOException e) {
-                    System.out.println("Нет соединения с сервером. Попробуйте позже.");
+                    showAlert(SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
                     serverProvider.reconnect();
                 }
 

@@ -1,6 +1,6 @@
 package main_package.validation;
 
-import main_package.data.WeaponType;
+import main_package.data.*;
 
 public class DataValidation {
 
@@ -10,6 +10,10 @@ public class DataValidation {
 
     public boolean validateBoolean(String text) {
         return text.equals("true") || text.equals("false");
+    }
+
+    public boolean validateCoordinates(Float x, Float y) {
+        return Coordinates.checkValidX(x) && Coordinates.checkValidY(y);
     }
 
     public boolean validateWeaponType(String weaponType) {

@@ -9,8 +9,8 @@ public class Coordinates implements Serializable {
     private final static long serialVersionUID = 1123456789L;
     private Float x; // поле не может быть null, max value = 620
     private Float y; // поле не может быть null, max value = 784
-    private static final Float max_x = 620F;
-    private static final Float max_y = 784F;
+    private static final Float max_x = 1400F;
+    private static final Float max_y = 900F;
 
     public Coordinates(Float x, Float y) {
         this.x = x;
@@ -23,7 +23,7 @@ public class Coordinates implements Serializable {
      * @return x belongs to the allowed segment
      */
     public static boolean checkValidX(Float x) {
-        return x <= max_x;
+        return x >= 0 && x <= max_x;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Coordinates implements Serializable {
      * @return y belongs to the allowed segment
      */
     public static boolean checkValidY (Float y) {
-        return y <= max_y;
+        return y>= 0 && y <= max_y;
     }
 
     /**

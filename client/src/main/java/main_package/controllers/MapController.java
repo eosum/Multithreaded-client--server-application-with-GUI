@@ -6,18 +6,16 @@ import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.stage.Popup;
 import javafx.util.Duration;
-import main_package.app.Client;
-import main_package.app.ServerProvider;
+import main_package.serverConnection.Client;
+import main_package.serverConnection.ServerProvider;
 import main_package.data.HumanBeing;
 import main_package.util.Request;
 import main_package.util.Response;
@@ -148,7 +146,7 @@ public class MapController {
                     }
                 }
                 catch (NullPointerException | IOException e) {
-                    System.out.println("Нет соединения с сервером. Попробуйте позже.");
+                    System.out.println(SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
                     serverProvider.reconnect();
                 }
 

@@ -1,4 +1,4 @@
-package main_package.app;
+package main_package.serverConnection;
 
 import java.io.ObjectInputStream;
 import java.io.ByteArrayInputStream;
@@ -7,6 +7,7 @@ import main_package.util.Response;
 import java.io.ObjectOutputStream;
 import java.io.ByteArrayOutputStream;
 import main_package.util.Request;
+import main_package.util.SceneSwitch;
 import main_package.util.SenderResult;
 
 import java.time.DateTimeException;
@@ -64,7 +65,7 @@ public class Client {
         }
         catch (IOException | NullPointerException e) {
             System.out.println(e.getMessage());
-            return new SenderResult(false, "Не удалось отправить данные на сервер");
+            return new SenderResult(false, SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
         }
         return new SenderResult();
     }
@@ -79,7 +80,7 @@ public class Client {
             response = (Response)input.readObject();
         }
         catch (ClassNotFoundException e) {
-            System.out.println("Некорреткные данные с сервера");
+            System.out.println("Некорректные данные с сервера");
         }
         catch (DateTimeException e) {
             System.out.println(e.getMessage());

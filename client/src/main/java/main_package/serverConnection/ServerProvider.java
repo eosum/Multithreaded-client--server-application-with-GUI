@@ -1,6 +1,5 @@
-package main_package.app;
+package main_package.serverConnection;
 
-import main_package.exceptions.ConnectException;
 import main_package.util.Request;
 import main_package.util.Response;
 import main_package.util.SenderResult;
@@ -13,14 +12,6 @@ public class ServerProvider {
 
     private ServerProvider() {
         client.connect();
-        /*int attempt = 0;
-        while(!client.connect()) {
-            attempt++;
-            if(attempt ==  5) {
-                System.exit(0);
-            }
-        }*/
-
     }
 
     public static ServerProvider getServerProvider() {

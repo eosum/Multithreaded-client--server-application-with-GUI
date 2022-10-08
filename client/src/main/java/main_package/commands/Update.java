@@ -1,6 +1,6 @@
 package main_package.commands;
 
-import main_package.app.ServerProvider;
+import main_package.serverConnection.ServerProvider;
 import main_package.data.HumanBeing;
 import main_package.util.DataForSending;
 import main_package.util.DataProcessing;

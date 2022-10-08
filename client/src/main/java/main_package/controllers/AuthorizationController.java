@@ -2,10 +2,8 @@ package main_package.controllers;
 
 import java.io.IOException;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
-import javafx.scene.Scene;
-import main_package.app.ServerProvider;
+import main_package.serverConnection.ServerProvider;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import main_package.util.Request;
@@ -99,12 +97,9 @@ public class AuthorizationController {
                     showAlert(response.getMessage());
                 }
             }
-            catch (NullPointerException e) {
-                showAlert("Нет соединения с сервером. Попробуйте позже.");
+            catch (NullPointerException | IOException e) {
+                showAlert(SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
                 serverProvider.reconnect();
-            }
-            catch (IOException e) {
-                showAlert("Ошибка в работе приложения");
             }
         });
 
@@ -120,12 +115,9 @@ public class AuthorizationController {
                     showAlert(response.getMessage());
                 }
             }
-            catch (NullPointerException e) {
-                showAlert("Нет соединения с сервером. Попробуйте позже.");
+            catch (NullPointerException | IOException e) {
+                showAlert(SceneSwitch.getResourceBundle().getString("serverConnectionLost"));
                 serverProvider.reconnect();
-            }
-            catch (IOException e) {
-                showAlert("Ошибка в работе приложения");
             }
         });
     }

@@ -34,7 +34,8 @@ public class DataProcessing {
                 && validator.validateString(object.getName()) && validator.validateString(object.getImpactSpeed())
                 && validator.validateString(object.getMinutesOfWaiting()) && validator.validateString(object.getX())
                 && validator.validateString(object.getY()) && validator.validateString(object.getSoundtrackName())
-                && validator.validateWeaponType(object.getWeaponType());
+                && validator.validateWeaponType(object.getWeaponType())
+                && validator.validateCoordinates(Float.valueOf(object.getX()), Float.valueOf(object.getY()));
         return result;
     }
 }
