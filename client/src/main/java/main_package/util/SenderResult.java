@@ -6,7 +6,7 @@ public class SenderResult {
 
     public SenderResult() {
         result = true;
-        message = "Успешно";
+        message = "";
     }
 
     public SenderResult(boolean result, String message) {

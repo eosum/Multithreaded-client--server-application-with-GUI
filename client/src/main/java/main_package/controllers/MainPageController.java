@@ -1,5 +1,6 @@
 package main_package.controllers;
 
+import main_package.app.SceneSwitch;
 import main_package.serverConnection.Client;
 import main_package.app.CommandList;
 import main_package.serverConnection.ServerProvider;
@@ -126,8 +127,8 @@ public class MainPageController {
 
     @FXML
     private void initialize() {
-//        userInfo = AuthorizationController.getUserInfo();
-        userInfo = new UserInfo("lol", "1");
+        userInfo = AuthorizationController.getUserInfo();
+//      userInfo = new UserInfo("lol", "1");
         validateFields();
         getHumanBeingObjects();
         tablePreparing();
@@ -138,32 +139,20 @@ public class MainPageController {
 
         languageChoose.setOnAction(event -> {
             String choose = languageChoose.getValue().toString();
-
-            if (choose.equals("Finish")) {
-                try {
+            try {
+                if (choose.equals(Languages.FINNISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("fi"));
-                    SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
-            }
-
-            if (choose.equals("English")) {
-                try {
+                if (choose.equals(Languages.ENGLISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("en"));
-                    SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
-            }
-
-            if (choose.equals("Espanol")) {
-                try {
+                if (choose.equals(Languages.SPANISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("es"));
-                    SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
+                SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         });
 
@@ -241,6 +230,7 @@ public class MainPageController {
                         outputField.setText(SceneSwitch.getResourceBundle().getString("successRequest"));
                         if(response.getMessage() != null) {
                             String[] parts = response.getMessage().split(" ");
+                            System.out.println(response.getMessage());
                             if (parts.length == 4) {
                                 outputField.setText(SceneSwitch.getResourceBundle().getString("date") + " " + parts[3] + '\n'
                                         + SceneSwitch.getResourceBundle().getString("number") + " " + parts[2] + '\n'
@@ -336,7 +326,7 @@ public class MainPageController {
     }
 
     private void getHumanBeingObjects() {
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             while(true) {
                 Client client = serverProvider.getClient();
                 Request request = new Request();
@@ -372,13 +362,16 @@ public class MainPageController {
                     throw new RuntimeException(e);
                 }
             }
-        }).start();
+        });
+
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void fullLanguageChoose() {
         languageChoose.getItems().removeAll(languageChoose.getItems());
-        languageChoose.getItems().addAll("English", "Espanol", "Finish");
-        languageChoose.getSelectionModel().select("Language");
+        languageChoose.getItems().addAll(Languages.ENGLISH.getLanguage(), Languages.FINNISH.getLanguage(), Languages.SPANISH.getLanguage());
+        languageChoose.getSelectionModel().select(SceneSwitch.getResourceBundle().getString("language"));
     }
 
     private void fillTextFields() {

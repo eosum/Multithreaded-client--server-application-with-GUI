@@ -3,7 +3,6 @@ package main_package.app;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main_package.util.*;
 
 public class Main extends Application {
 
@@ -15,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             SceneSwitch.setStage(stage);
-            SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
+            SceneSwitch.setScene("../../fxml/authorization.fxml", "../../css/authorization.css");
             SceneSwitch.show();
         }
         catch (IOException e) {

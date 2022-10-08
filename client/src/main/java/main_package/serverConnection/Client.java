@@ -7,7 +7,7 @@ import main_package.util.Response;
 import java.io.ObjectOutputStream;
 import java.io.ByteArrayOutputStream;
 import main_package.util.Request;
-import main_package.util.SceneSwitch;
+import main_package.app.SceneSwitch;
 import main_package.util.SenderResult;
 
 import java.time.DateTimeException;

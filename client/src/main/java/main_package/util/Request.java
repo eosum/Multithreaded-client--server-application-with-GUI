@@ -14,9 +14,6 @@ public class Request implements Serializable {
     public String getCommand() {
         return command;
     }
-    public String getArg() {
-        return arg;
-    }
     public void setUser(String user) {
         this.user = user;
     }
@@ -25,13 +22,6 @@ public class Request implements Serializable {
         this.password = password;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
     public void setCommand(String command) {
         this.command = command;
     }

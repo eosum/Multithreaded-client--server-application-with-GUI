@@ -25,13 +25,13 @@
 }
 
 
-#toMainPageButton {
+#backButton {
     -fx-translate-x: 630px;
     -fx-translate-y: 28px;
 }
 
 #map {
-    -fx-translate-y: 40px;
+    -fx-translate-y: 60px;
 }
 
 #languageChoose {

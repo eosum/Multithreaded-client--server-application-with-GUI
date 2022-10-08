@@ -17,9 +17,10 @@ import javafx.util.Duration;
 import main_package.serverConnection.Client;
 import main_package.serverConnection.ServerProvider;
 import main_package.data.HumanBeing;
+import main_package.util.Languages;
 import main_package.util.Request;
 import main_package.util.Response;
-import main_package.util.SceneSwitch;
+import main_package.app.SceneSwitch;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -32,7 +33,7 @@ public class MapController {
     @FXML
     private ComboBox languageChoose;
     @FXML
-    private Button toMainPageButton;
+    private Button backButton;
     GraphicsContext context;
     HashMap<String, Color> ownerColor = new HashMap<>();
     volatile HashMap<HumanBeing, String> objectsHistory = new HashMap<>();
@@ -58,37 +59,10 @@ public class MapController {
                     }
                 });
             }
-            if(element.get() != null) {
-                Popup popup = new Popup();
-                TextArea info = new TextArea();
-                ResourceBundle rb = SceneSwitch.getResourceBundle();
-                info.setText(
-                        "" + "\n"
-                        + "ID: " + element.get().getId() + "\n"
-                        + rb.getString("name") + ": " + element.get().getName() + "\n"
-                        + "X: " + element.get().getCoordinateX() + "\n"
-                        + "Y: " + element.get().getCoordinateY() + "\n"
-                        + rb.getString("realHero") + ": " + "\n"
-                        + rb.getString("toothpick") + ": " +  element.get().getHasToothpick() + "\n"
-                        + rb.getString("impactSpeed") + ": "+ element.get().getImpactSpeed() + "\n"
-                        + rb.getString("soundtrack") + ": " + element.get().getSoundtrackName() + "\n"
-                        + rb.getString("minutes") + ": " + element.get().getMinutesOfWaiting() + "\n"
-                        + rb.getString("weaponType") + ": " + element.get().getWeaponType() + "\n"
-                        + rb.getString("car") + ": " + element.get().getCar() + "\n"
-                        + rb.getString("creationDate") + ": " + element.get().getCreationDate() + "\n"
-                        + rb.getString("owner") + ": " + element.get().getOwner()
-                        + ""
-                );
-
-                info.setEditable(false);
-
-                popup.getContent().add(info);
-                popup.setAutoHide(true);
-                if (!popup.isShowing()) popup.show(SceneSwitch.getStage());
-            }
+            elementInfoOutput(element);
         });
 
-        toMainPageButton.setOnAction(event -> {
+        backButton.setOnAction(event -> {
             try {
                 SceneSwitch.setScene("../../fxml/main_page.fxml", "../../css/main_page.css");
                 SceneSwitch.show();
@@ -101,38 +75,26 @@ public class MapController {
 
         languageChoose.setOnAction(event -> {
             String choose = languageChoose.getValue().toString();
-
-            if (choose.equals("Finish")) {
-                try {
+            try {
+                if (choose.equals(Languages.FINNISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("fi"));
-                    SceneSwitch.setScene("../../fxml/map_page.fxml", "../../css/map_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
-            }
-
-            if (choose.equals("English")) {
-                try {
+                if (choose.equals(Languages.ENGLISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("en"));
-                    SceneSwitch.setScene("../../fxml/map_page.fxml", "../../css/map_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
-            }
-
-            if (choose.equals("Espanol")) {
-                try {
+                if (choose.equals(Languages.SPANISH.getLanguage())) {
                     SceneSwitch.setLocale(new Locale("es"));
-                    SceneSwitch.setScene("../../fxml/map_page.fxml", "../../css/map_page.css");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
                 }
+                SceneSwitch.setScene("../../fxml/map_page.fxml", "../../css/map_page.css");
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         });
     }
 
     private void getObjects() {
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             Client client = serverProvider.getClient();
             while(true) {
                 Request request = new Request();
@@ -161,7 +123,10 @@ public class MapController {
                     System.out.println(e.getMessage());
                 }
             }
-        }).start();
+        });
+
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void startDrawing() {
@@ -201,6 +166,16 @@ public class MapController {
                 iterator.remove();
             }
         }
+    }
+
+    private void deleteGhost(HumanBeing element, LinkedList<HumanBeing> drawAgain) {
+        drawCross(element, drawAgain);
+    }
+
+    private void fullLanguageChoose() {
+        languageChoose.getItems().removeAll(languageChoose.getItems());
+        languageChoose.getItems().addAll(Languages.ENGLISH.getLanguage(), Languages.FINNISH.getLanguage(), Languages.SPANISH.getLanguage());
+        languageChoose.getSelectionModel().select(SceneSwitch.getResourceBundle().getString("language"));
     }
 
     private void updateCollection() {
@@ -251,10 +226,10 @@ public class MapController {
         int deltaX1 = 120;
         int deltaY1 = 85;
         final double diameter = 10;
-        Float startedX = element.getCoordinateX() + deltaX;
-        Float startedY = element.getCoordinateY() + deltaY;
-        Float endedX = element.getCoordinateX() + deltaX1;
-        Float endedY = element.getCoordinateY() + deltaY1;
+        float startedX = element.getCoordinateX() + deltaX;
+        float startedY = element.getCoordinateY() + deltaY;
+        float endedX = element.getCoordinateX() + deltaX1;
+        float endedY = element.getCoordinateY() + deltaY1;
         DoubleProperty x  = new SimpleDoubleProperty(startedX);
         DoubleProperty y  = new SimpleDoubleProperty(startedY);
 
@@ -279,14 +254,35 @@ public class MapController {
         timeline.play();
     }
 
-    private void deleteGhost(HumanBeing element, LinkedList<HumanBeing> drawAgain) {
-        drawCross(element, drawAgain);
-    }
+    private void elementInfoOutput(AtomicReference<HumanBeing> element) {
+        if(element.get() != null) {
+            Popup popup = new Popup();
+            TextArea info = new TextArea();
+            ResourceBundle rb = SceneSwitch.getResourceBundle();
+            info.setText(
+                    "" + "\n"
+                            + "ID: " + element.get().getId() + "\n"
+                            + rb.getString("name") + ": " + element.get().getName() + "\n"
+                            + "X: " + element.get().getCoordinateX() + "\n"
+                            + "Y: " + element.get().getCoordinateY() + "\n"
+                            + rb.getString("realHero") + ": " + "\n"
+                            + rb.getString("toothpick") + ": " + element.get().getHasToothpick() + "\n"
+                            + rb.getString("impactSpeed") + ": " + element.get().getImpactSpeed() + "\n"
+                            + rb.getString("soundtrack") + ": " + element.get().getSoundtrackName() + "\n"
+                            + rb.getString("minutes") + ": " + element.get().getMinutesOfWaiting() + "\n"
+                            + rb.getString("weaponType") + ": " + element.get().getWeaponType() + "\n"
+                            + rb.getString("car") + ": " + element.get().getCar() + "\n"
+                            + rb.getString("creationDate") + ": " + element.get().getCreationDate() + "\n"
+                            + rb.getString("owner") + ": " + element.get().getOwner()
+                            + ""
+            );
 
-    private void fullLanguageChoose() {
-        languageChoose.getItems().removeAll(languageChoose.getItems());
-        languageChoose.getItems().addAll("English", "Espanol", "Finish");
-        languageChoose.getSelectionModel().select("Language");
+            info.setEditable(false);
+
+            popup.getContent().add(info);
+            popup.setAutoHide(true);
+            if (!popup.isShowing()) popup.show(SceneSwitch.getStage());
+        }
     }
 
 

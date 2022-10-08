@@ -1,4 +1,4 @@
-package main_package.util;
+package main_package.app;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;

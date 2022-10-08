@@ -58,21 +58,9 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return weaponType;
     }
 
-
-    /**
-     * @return creation date
-     */
-    public LocalDate getCreationDate() {
-        return creationDate.get();
-    }
-
     public ObjectProperty<LocalDate> getCreationDateProperty() {
         return creationDate;
     }
-
-    /**
-     * @return the brand of the car
-     */
 
     public Car getCar() {
         return car.get();
@@ -86,9 +74,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return y.get();
     }
 
-    /**
-     * @return number of waiting minutes
-     */
     public Integer getMinutesOfWaiting() {
         return minutesOfWaiting.get();
     }
@@ -97,9 +82,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return minutesOfWaiting;
     }
 
-    /**
-     * @return impact speed
-     */
     public LongProperty getImpactSpeedProperty() {
         return impactSpeed;
     }
@@ -108,9 +90,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return impactSpeed.get();
     }
 
-    /**
-     * @return has toothpick or not
-     */
     public Boolean getHasToothpick() {
         return hasToothpick.get();
     }
@@ -118,9 +97,7 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
     public BooleanProperty getHasToothpickProperty() {
         return hasToothpick;
     }
-    /**
-     * @return element's id
-     */
+
     public Long getId() {
         return id.get();
     }
@@ -129,9 +106,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return id;
     }
 
-    /**
-     * @return element's name
-     */
     public String getName() {
         return name.get();
     }
@@ -144,9 +118,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
         return owner;
     }
 
-    /**
-     * @return is element real hero
-     */
     public Boolean getRealHero() {
         return realHero.get();
     }
@@ -154,10 +125,7 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
     public BooleanProperty getRealHeroProperty() {
         return realHero;
     }
-    /**
-     *
-     * @return element's soundtrack
-     */
+
     public String getSoundtrackName() {
         return soundtrackName.get();
     }
@@ -165,10 +133,6 @@ public class HumanBeingProperty implements Comparable<HumanBeingProperty>, Seria
     public StringProperty getSoundtrackNameProperty() {
         return soundtrackName;
     }
-    /**
-     *
-     * @return element's weapon type
-     */
     public String getWeaponType() {
         return weaponType.get().toString();
     }
