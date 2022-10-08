@@ -1,5 +1,6 @@
 package main_package.commands;
 
+import main_package.app.SceneSwitch;
 import main_package.serverConnection.ServerProvider;
 import main_package.data.HumanBeing;
 import main_package.util.DataForSending;
@@ -14,7 +15,7 @@ public class Update implements Command {
         DataProcessing dataProcess = new DataProcessing();
         HumanBeing result = dataProcess.dataProcessing(object);
         if (result == null || result.getId() == -1) {
-            return new SenderResult(false, "Проверьте корректность ввода. Также поля не должны быть пустыми");
+            return new SenderResult(false, SceneSwitch.getResourceBundle().getString("inputError"));
         }
         request.setObject(result);
         return serverProvider.send(request);

@@ -1,5 +1,6 @@
 package main_package.commands;
 
+import main_package.app.SceneSwitch;
 import main_package.serverConnection.ServerProvider;
 import main_package.data.HumanBeing;
 import main_package.util.DataForSending;
@@ -14,7 +15,7 @@ public class AddIfMin implements Command {
         DataProcessing dataProcess = new DataProcessing();
         HumanBeing result = dataProcess.dataProcessing(object);
         if (result == null) {
-            return new SenderResult(false, "Проверьте корректность ввода. Выберите help для инструкций по вводу.");
+            return new SenderResult(false, SceneSwitch.getResourceBundle().getString("inputError"));
         }
         request.setObject(result);
         return serverProvider.send(request);
