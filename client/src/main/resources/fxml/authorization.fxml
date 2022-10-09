@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <?import javafx.scene.control.ComboBox?>
-<AnchorPane fx:id="body" prefHeight="560" prefWidth="766" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_package.controllers.AuthorizationController">
+<AnchorPane fx:id="body" prefHeight="560" prefWidth="766" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packages.controllers.AuthorizationController">
    <children>
       <ComboBox fx:id="languageChoose"/>
       <Pane layoutX="179.0" layoutY="96.0" prefHeight="334.0" prefWidth="354.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="96.0">
