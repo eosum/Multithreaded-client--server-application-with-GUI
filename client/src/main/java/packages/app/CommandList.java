@@ -14,13 +14,13 @@ public class CommandList {
     public CommandList() {
         commands.put("add", new Add());
         commands.put("update", new Update());
-        commands.put("remove_by_id", new RemoveByID());
+        commands.put("removeById", new RemoveByID());
         commands.put("clear", new Clear());
-        commands.put("remove_first", new RemoveFirst());
-        commands.put("count_less_than_weapon_type", new CountLessThanWeaponType());
+        commands.put("removeFirst", new RemoveFirst());
+        commands.put("countLessThanWeaponType", new CountLessThanWeaponType());
         commands.put("info", new Info());
-        commands.put("remove_greater", new RemoveGreater());
-        commands.put("add_if_min", new AddIfMin());
+        commands.put("removeGreater", new RemoveGreater());
+        commands.put("addIfMin", new AddIfMin());
     }
 
     public SenderResult requestFormation(String command, DataForSending object, UserInfo user) {

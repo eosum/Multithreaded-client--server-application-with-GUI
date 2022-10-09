@@ -200,21 +200,13 @@
     -fx-font-size: 15px;
 }
 
-.text-area {
-    -fx-background-color: #232531;
-    -fx-translate-x: 143px;
+#outputField {
+    -fx-translate-x: 152px;
     -fx-translate-y: 690px;
-    -fx-pref-width: 630px;
-    -fx-pref-height: 240px;
-    -fx-text-fill: #ffffff;
     -fx-font-size: 20px;
-    -fx-background-radius: 0px;
+    -fx-text-fill: #ffffff;
 }
 
-.text-area .content {
-    -fx-background-color: #232531;
-    -fx-background-radius: 0px;
-}
 
 #languageChoose {
     -fx-translate-x: 1374px;

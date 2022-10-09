@@ -173,12 +173,12 @@ public class MainPageController {
 
         addIfMin.setOnAction(event -> {
             makeFieldEditable();
-            command = "add_if_min";
+            command = "addIfMin";
         });
 
         removeById.setOnAction(event -> {
             id.setEditable(true);
-            command = "remove_by_id";
+            command = "removeById";
         });
 
         clear.setOnAction(event -> {
@@ -186,7 +186,7 @@ public class MainPageController {
         });
 
         countLess.setOnAction(event -> {
-            command = "count_less_than_weapon_type";
+            command = "countLessThanWeaponType";
             weapon_type.setEditable(true);
         });
 
@@ -206,11 +206,11 @@ public class MainPageController {
 
         removeGreater.setOnAction(event -> {
             id.setEditable(true);
-            command = "remove_greater";
+            command = "removeGreater";
         });
 
         removeFirst.setOnAction(event -> {
-            command = "remove_first";
+            command = "removeFirst";
         });
 
         update.setOnAction(event -> {
@@ -327,7 +327,7 @@ public class MainPageController {
                 Client client = serverProvider.getClient();
                 Request request = new Request();
                 Response response = null;
-                request.setCommand("get_data");
+                request.setCommand("getData");
 
                 try {
                     client.sendRequest(request);

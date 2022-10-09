@@ -24,18 +24,17 @@ public class CommandsList {
     public CommandsList(CollectionManager collectionManager) {
         commands.put("add", new Add(collectionManager));
         commands.put("update", new Update(collectionManager));
-        commands.put("remove_by_id", new RemoveById(collectionManager));
+        commands.put("removeById", new RemoveById(collectionManager));
         commands.put("clear", new Clear(collectionManager));
         commands.put("info", new Info(collectionManager));
-        commands.put("remove_first", new RemoveFirst(collectionManager));
-        commands.put("count_less_than_weapon_type", new CountLessThanWeaponType(collectionManager));
-        commands.put("remove_greater", new RemoveGreater(collectionManager));
-        commands.put("add_if_min", new AddIfMin(collectionManager));
+        commands.put("removeFirst", new RemoveFirst(collectionManager));
+        commands.put("countLessThanWeaponType", new CountLessThanWeaponType(collectionManager));
+        commands.put("removeGreater", new RemoveGreater(collectionManager));
+        commands.put("addIfMin", new AddIfMin(collectionManager));
         commands.put("help", new Help(commands, collectionManager));
         commands.put("register", new Register());
         commands.put("login", new Login());
-        commands.put("get_data", new GetDataFromDB(collectionManager));
-        commands.put("exit", new Exit());
+        commands.put("getData", new GetDataFromDB(collectionManager));
     }
 
     public void execute(Request request) {

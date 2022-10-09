@@ -99,7 +99,7 @@ public class MapController {
             while(true) {
                 Request request = new Request();
                 Response response = null;
-                request.setCommand("get_data");
+                request.setCommand("getData");
 
                 try {
                     client.sendRequest(request);
