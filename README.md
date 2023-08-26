@@ -1,5 +1,6 @@
 # Multithreaded-client-server-application with GUI
 Дорабатывание предыдущего проекта https://github.com/eosum/Multithreaded-client-server-application
+
 Не используются сторонние фреймворки, запросы на SQL пишутся вручную, соответственно, выделен отдельный слой бизнес - логики, связанный с БД
 
 ## Требования
